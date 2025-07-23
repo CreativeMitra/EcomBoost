@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CreativeMitra - Billion-Dollar Brand Identity Agency</title>
+  <meta name="description" content="Transform your market presence with our complete brand domination package">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      color: #333;
+      background-color: #FAFAFA;
+    }
+    
+    .hero-section {
+      background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%);
+      height: 100vh;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: url('https://cdn.pixabay.com/photo/2018/01/26/18/21/matrix-3109378_1280.jpg');
+      opacity: 0.07;
+      top: -50%;
+      left: -50%;
+      animation: rotate 60s linear infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .btn-primary {
+      background-image: linear-gradient(135deg, #805AD5 0%, #4C1D95 100%);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(76, 29, 149, 0.2);
+    }
+    
+    .btn-secondary {
+      border: 2px solid #fff;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .service-card {
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+    
+    .testimonial-card {
+      border-radius: 10px;
+      overflow: hidden;
+      height: 100%;
+    }
+    
+    form input, form textarea, form select {
+      border-radius: 5px;
+      border: 1px solid #E2E8F0;
+      padding: 0.75rem 1rem;
+      width: 100%;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    form input:focus, form textarea:focus, form select:focus {
+      border-color: #805AD5;
+      box-shadow: 0 0 0 3px rgba(128, 90, 213, 0.2);
+      outline: none;
+    }
+    
+    form button {
+      background-image: linear-gradient(135deg, #805AD5 0%, #4C1D95 100%);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    
+    form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(76, 29, 149, 0.2);
+    }
+    
+    .navbar {
+      transition: background-color 0.3s ease, padding 0.3s ease;
+    }
+    
+    .navbar.scrolled {
+      background-color: rgba(26, 32, 44, 0.95);
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    /* Loading spinner */
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+      display: none;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Mobile menu animation */
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .mobile-menu.open {
+      max-height: 500px;
+      transition: max-height 0.5s ease-in;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-section {
+        height: auto;
+        padding: 120px 0 80px;
+      }
+
+      .hero-section h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+      }
+
+      .service-card {
+        margin-bottom: 1.5rem;
+      }
+
+      .testimonial-card {
+        margin-bottom: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar fixed top-0 left-0 w-full py-4 z-50 text-white">
+    <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold">
+        Creative<span class="text-purple-500">Mitra</span>
+      </a>
+      
+      <div class="hidden md:flex space-x-8">
+        <a href="#services" class="hover:text-purple-400 transition duration-300">Services</a>
+        <a href="#why-us" class="hover:text-purple-400 transition duration-300">Why Us</a>
+        <a href="#contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+      </div>
+      
+      <div class="md:hidden">
+        <button id="menu-toggle" class="focus:outline-none" aria-label="Toggle menu">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden bg-gray-900 w-full">
+      <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+        <a href="#services" class="hover:text-purple-400 transition duration-300">Services</a>
+        <a href="#why-us" class="hover:text-purple-400 transition duration-300">Why Us</a>
+        <a href="#contact" class="hover:text-purple-400 transition duration-300">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section flex items-center justify-center">
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="text-center max-w-4xl mx-auto text-white" data-aos="fade-up">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+          We Build Billion-Dollar Brand Identities That Scale Your Business
+        </h1>
+        <p class="text-lg md:text-xl opacity-90 mb-8">
+          Transform your market presence with our complete brand domination package, designed for businesses ready to scale.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="#contact" class="btn-primary text-white font-bold px-8 py-4 rounded-lg text-lg">
+            Get Your Free Strategy Call
+          </a>
+          <a href="#services" class="btn-secondary text-white font-bold px-8 py-4 rounded-lg text-lg">
+            Our Services
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="absolute bottom-8 left-0 right-0 text-center">
+      <a href="#services" class="text-white animate-bounce inline-block" aria-label="Scroll down">
+        <i class="fas fa-chevron-down"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 bg-white">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Domination Pack — $4,999</h2>
+        <p class="text-gray-600 text-xl">For brands ready to dominate.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Service 1 -->
+        <div class="service-card bg-white p-8 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon bg-purple-100 text-purple-600 mx-auto">
+            <i class="fas fa-palette" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-center">Billion-Dollar Brand Identity</h3>
+          <p class="text-gray-600 mb-5 text-center">Premium visual identity that positions your brand at the forefront of your industry.</p>
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> 5 Unique Logo Versions</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Unlimited Revisions</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Delivered in AI, SVG, PNG, PDF</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> 3 Logo Mockups For Each Concept</li>
+          </ul>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="service-card bg-white p-8 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon bg-blue-100 text-blue-600 mx-auto">
+            <i class="fas fa-code" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-center">Ultra-Premium UI/UX</h3>
+          <p class="text-gray-600 mb-5 text-center">Complete e-commerce store and conversion-optimized checkout funnel.</p>
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Fully Coded (HTML + CSS)</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Mobile + Desktop Version</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> PNG Mockups of All Screens</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Clean Code – Developer-Ready</li>
+          </ul>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="service-card bg-white p-8 shadow-lg" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon bg-green-100 text-green-600 mx-auto">
+            <i class="fas fa-rocket" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-center">Elite Landing Page</h3>
+          <p class="text-gray-600 mb-5 text-center">Conversion-focused landing page designed to turn visitors into customers.</p>
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> High-Ticket Funnel Pre-Loaded</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Hero Section + CTA</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Social Proof Elements</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Speed-Optimized Files</li>
+          </ul>
+        </div>
+        
+        <!-- Service 4 -->
+        <div class="service-card bg-white p-8 shadow-lg" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-icon bg-yellow-100 text-yellow-600 mx-auto">
+            <i class="fas fa-robot" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-center">AI Chatbot Titan</h3>
+          <p class="text-gray-600 mb-5 text-center">Custom-trained AI assistant that engages visitors and captures leads 24/7.</p>
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Custom-Trained on Your Brand</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Unlimited FAQs + Smart Sales Flows</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Lead Capture via Chat</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Multi-Platform Integration</li>
+          </ul>
+        </div>
+        
+        <!-- Service 5 -->
+        <div class="service-card bg-white p-8 shadow-lg md:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="500">
+          <div class="service-icon bg-red-100 text-red-600 mx-auto">
+            <i class="fas fa-video" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-center">Studio-Quality Videos</h3>
+          <p class="text-gray-600 mb-5 text-center">6 professional videos designed to engage and convert your audience.</p>
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Multiple Formats (UGC, Ad, CEO Story)</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> MP4 + Square + Vertical Versions</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Hook → Problem → Product → CTA</li>
+            <li><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Captions, Overlays, Transitions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Section -->
+  <section id="social-proof" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Trusted By Industry Leaders</h2>
+        <p class="text-gray-600 text-xl">We've helped businesses achieve extraordinary results</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card bg-white p-8 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-6 italic">"CreativeMitra transformed our brand identity completely. Their Domination Pack delivered everything promised and more. Our e-commerce conversions increased by 213% within the first 30 days."</p>
+          <div class="flex items-center">
+            <img src="https://cdn.pixabay.com/photo/2017/08/30/12/45/girl-2696947_1280.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold">Sarah Johnson</h4>
+              <p class="text-gray-500 text-sm">CEO, FashionFusion</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card bg-white p-8 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-6 italic">"The AI chatbot and videos alone were worth the investment. We've seen a 45% increase in qualified leads and our sales team is thrilled with the quality. The brand identity has positioned us as the premium choice in our market."</p>
+          <div class="flex items-center">
+            <img src="https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg" alt="Mark Thompson" class="w-12 h-12 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold">Mark Thompson</h4>
+              <p class="text-gray-500 text-sm">Founder, TechPulse</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card bg-white p-8 shadow-lg" data-aos="fade-up" data-aos-delay="300">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-6 italic">"We were hesitant about the investment at first, but the ROI has been phenomenal. Our new brand identity and website have helped us secure $2.5M in funding. The CreativeMitra team delivered everything on time and exceeded our expectations."</p>
+          <div class="flex items-center">
+            <img src="https://cdn.pixabay.com/photo/2018/11/08/23/52/man-3803551_1280.jpg" alt="David Chen" class="w-12 h-12 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold">David Chen</h4>
+              <p class="text-gray-500 text-sm">Co-founder, GrowthLabs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-16 text-center" data-aos="fade-up">
+        <div class="inline-block p-4 bg-white rounded-lg shadow-md">
+          <img src="https://cdn.pixabay.com/photo/2022/12/10/13/46/award-7647320_1280.png" alt="Best Brand Agency 2024 Award" class="h-16 mx-auto mb-2">
+          <p class="font-bold">Best Brand Agency 2024</p>
+          <p class="text-sm text-gray-500">Digital Excellence Awards</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us Section -->
+  <section id="why-us" class="py-20 bg-purple-900 text-white">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose CreativeMitra?</h2>
+        <p class="text-purple-200 text-xl">Our unique approach delivers results that drive business growth</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Reason 1 -->
+        <div class="bg-purple-800 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-5xl text-purple-300 mb-6">
+            <i class="fas fa-bolt" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Complete Package, One Price</h3>
+          <p class="text-purple-200">Get everything you need to dominate your market without the hassle of coordinating multiple agencies. One team, one vision, one powerful result.</p>
+        </div>
+        
+        <!-- Reason 2 -->
+        <div class="bg-purple-800 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-5xl text-purple-300 mb-6">
+            <i class="fas fa-chart-line" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Proven ROI Methodology</h3>
+          <p class="text-purple-200">Our clients see an average 3-5x return on investment within 90 days. We design every element with conversion and business growth in mind.</p>
+        </div>
+        
+        <!-- Reason 3 -->
+        <div class="bg-purple-800 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-5xl text-purple-300 mb-6">
+            <i class="fas fa-rocket" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Future-Proof Brand Building</h3>
+          <p class="text-purple-200">We don't just deliver today's trends, we build enduring brand assets that scale with your business and adapt to tomorrow's market demands.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Create Your Brand Domination Strategy</h2>
+        <p class="text-gray-600 text-xl">Book your free strategy call or send us a message</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+          <form id="contact-form">
+            <div class="mb-4">
+              <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="mb-4">
+              <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="mb-4">
+              <label for="company" class="block text-gray-700 mb-2">Company</label>
+              <input type="text" id="company" name="company" placeholder="Your company name">
+            </div>
+            <div class="mb-6">
+              <label for="message" class="block text-gray-700 mb-2">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..." required></textarea>
+            </div>
+            <button type="submit" class="w-full flex items-center justify-center">
+              <span>Send Message</span>
+              <div class="spinner ml-3"></div>
+            </button>
+          </form>
+          <div id="form-success" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded">
+            Thank you for reaching out! We'll get back to you within 24 hours.
+          </div>
+          <div id="form-error" class="hidden mt-4 p-4 bg-red-100 text-red-700 rounded">
+            Something went wrong. Please try again or contact us directly.
+          </div>
+        </div>
+        
+        <!-- Booking Calendar -->
+        <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-2xl font-bold mb-6">Book Your Free Strategy Call</h3>
+          <div class="flex flex-col items-center justify-center h-full">
+            <p class="text-center mb-8">Schedule a 30-minute call with our brand strategist to discuss how we can help your business dominate your market.</p>
+            <div class="w-full bg-purple-100 p-8 rounded-lg mb-8">
+              <img src="https://cdn.pixabay.com/photo/2017/07/10/23/43/question-mark-2492009_1280.jpg" alt="Calendar booking illustration" class="w-full h-48 object-cover rounded mb-4">
+              <p class="text-center text-gray-600">Select a time that works for you</p>
+              <button id="booking-btn" class="w-full mt-4 bg-purple-600 text-white font-bold py-3 px-4 rounded hover:bg-purple-700 transition duration-300">
+                Check Available Times
+              </button>
+            </div>
+            <div class="text-center">
+              <p class="text-lg font-bold">Or contact us directly</p>
+              <p class="mt-2"><i class="fas fa-phone mr-2 text-purple-600" aria-hidden="true"></i> +1 (555) 123-4567</p>
+              <p class="mt-2"><i class="fas fa-envelope mr-2 text-purple-600" aria-hidden="true"></i> creativemitraofficial@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+        <div class="mb-6 md:mb-0">
+          <a href="#" class="text-2xl font-bold">
+            Creative<span class="text-purple-500">Mitra</span>
+          </a>
+          <p class="mt-2 text-gray-400">Your partner in brand domination.</p>
+        </div>
+        
+        <div class="flex space-x-6">
+          <a href="#" class="hover:text-purple-400 transition duration-300 text-xl" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="hover:text-purple-400 transition duration-300 text-xl" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="hover:text-purple-400 transition duration-300 text-xl" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="#" class="hover:text-purple-400 transition duration-300 text-xl" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </div>
+      </div>
+      
+      <hr class="border-gray-800 mb-8">
+      
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 mb-4 md:mb-0">© 2025 CreativeMitra. All rights reserved.</p>
+        <div class="flex space-x-8">
+          <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS animation
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+      });
+      
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('open');
+        this.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+      });
+      
+      // Mobile menu links closing the menu when clicked
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+      
+      // Navbar scroll effect
+      const navbar = document.querySelector('.navbar');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Form submission
+      const contactForm = document.getElementById('contact-form');
+      const formSuccess = document.getElementById('form-success');
+      const formError = document.getElementById('form-error');
+      const spinner = document.querySelector('.spinner');
+      
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading spinner
+        spinner.style.display = 'block';
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        
+        // Get form data
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          company: document.getElementById('company').value,
+          message: document.getElementById('message').value
+        };
+        
+        // Send form data via Formspree
+        fetch('https://formspree.io/f/creativemitraofficial@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        })
+        .then(response => {
+          // Hide spinner
+          spinner.style.display = 'none';
+          submitBtn.disabled = false;
+          
+          if (response.ok) {
+            // Show success message
+            formSuccess.classList.remove('hidden');
+            formError.classList.add('hidden');
+            contactForm.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+              formSuccess.classList.add('hidden');
+            }, 5000);
+          } else {
+            throw new Error('Form submission failed');
+          }
+        })
+        .catch(error => {
+          // Hide spinner
+          spinner.style.display = 'none';
+          submitBtn.disabled = false;
+          
+          // Show error message
+          formError.classList.remove('hidden');
+          
+          // Hide error message after 5 seconds
+          setTimeout(function() {
+            formError.classList.add('hidden');
+          }, 5000);
+        });
+      });
+      
+      // Booking calendar button
+      const bookingBtn = document.getElementById('booking-btn');
+      bookingBtn.addEventListener('click', function() {
+        window.location.href = 'mailto:creativemitraofficial@gmail.com?subject=Strategy Call Booking&body=Please let me know your available times for a strategy call.';
+      });
+    });
+  </script>
+</body>
+</html>
